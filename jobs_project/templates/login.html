@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <title>Login</title>
+</head>
+<body>
+    {% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    <strong>Message:</strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+{% endfor %}
+<div class="wrapper">
+    <div class="logo">
+        <img src="{% static 'images/Job Star.png' %}" alt="">
+    </div>
+    <div class="text-center mt-4 name">
+        Job Star
+    </div>
+    <form class="p-3 mt-3" method="post" action="/login">
+        {% csrf_token %}
+        <div class="form-field d-flex align-items-center">
+            <span class="far fa-user"></span>
+            <input type="text" name="username" id="userName" placeholder="Username">
+        </div>
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input type="password" name="password" id="pwd" placeholder="Password">
+        </div>
+        <button class="btn mt-3">Login</button>
+    </form>
+    <div class="text-center fs-6">
+        <a href="/register">Register</a>
+    </div>
+</div>
+</body>
+</html>

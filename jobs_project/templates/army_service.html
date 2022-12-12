@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<main>
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    {% endfor %}
+    <form style="background-color: black; padding-top: 50px;" method="post" action="/resume/army-service">
+        {% csrf_token %}
+        <h1>Army Service</h1>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Role</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="role">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Start Date</label>
+            <input type="date" class="form-control" id="exampleFormControlInput1" name="start">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">End Date</label>
+            <input type="date" class="form-control" id="exampleFormControlInput1" name="end">
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" name="description" placeholder="detail about what you did"
+                id="floatingTextarea" style="height: 150px;"></textarea>
+            <label for="floatingTextarea">detail about what you did</label>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+</main>
+</html>
+{% endblock %}

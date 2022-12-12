@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="margin-top: 50px; background-color: black;">
+    <div class="col-lg-4 sidebar">
+        <div class="single-slidebar">
+            <ul class="cat-list">
+                <h4>receiver</h4>
+                <li><p>{{data.receiver}}</p></li>
+                <h4>salary</h4>
+                <li><p>{{data.salary}}</p></li>
+                <h4>Message</h4>
+                <li><p>{{data.message}}</p></li>
+                <h4>Confirm</h4>
+                <li><p>{{data.confirm}}</p></li>
+            </ul>
+        </div>
+</body>
+</html>
+{% endblock %}

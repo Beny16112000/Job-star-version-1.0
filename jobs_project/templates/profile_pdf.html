@@ -1,0 +1,252 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Resume Website Template Free Download</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Resume Website Template Free Download" name="keywords">
+        <meta content="Resume Website Template Free Download" name="description">
+
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:300;400;600;700;800&display=swap" rel="stylesheet">
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="{% static  'css/profile/lib/slick/slick.css' %}" rel="stylesheet">
+        <link href="{% static 'css/profile/lib/slick/slick-theme.css' %}" rel="stylesheet">
+        <link href="{% static 'css/profile/lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="{% static 'css/profile/style.css' %}" rel="stylesheet">
+    </head>
+    <body data-spy="scroll" data-target=".navbar" data-offset="51">
+        <div class="wrapper">
+            <div class="sidebar">
+                <div class="sidebar-header">
+                </div>
+                <div class="sidebar-content">
+                    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                        <a href="#" class="navbar-brand">Navigation</a>
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarCollapse">
+                            <ul class="nav navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#header">Head<i class="fa fa-home"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#about">About<i class="fa fa-address-card"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#education">Education<i class="fa fa-star"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#experience">Experience<i class="fa fa-star"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#army">Army<i class="fa fa-star"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#portfolio">Language<i class="fa fa-file-archive"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#contact">Contact<i class="fa fa-envelope"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="content">
+                <!-- Header Start -->
+                <div class="header" id="header">
+                    <div class="content-inner">
+                        <p>I'm</p>
+                        <h1>{{user.first_name}} {{user.last_name}}</h1>
+                        <h2></h2>
+                        {% for e in experience %}
+                        <div class="typed-text">{{e.job}},</div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- Header End -->
+                <!-- About Start -->
+                <div class="about" id="about">
+                    <div class="content-inner">
+                        <div class="content-header">
+                            <h2>About Me</h2>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-md-6 col-lg-7">
+                                <p>
+                                    {{about.about}}
+                                </p>
+                                <a class="btn" href="#">Hire Me</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="skills">
+                                  {% for s in skills %}
+                                    <div class="skill-name">
+                                        <p>{{s.skill}}</p><p>100%</p>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- About End -->
+                
+                <!-- Education Start -->
+                <div class="education" id="education">
+                    <div class="content-inner">
+                        <div class="content-header">
+                            <h2>Education</h2>
+                        </div>
+                        <div class="row align-items-center">
+                          {% for ed in education %}
+                                  <div class="edu-col">
+                                      <span>{{ed.start}}<i>to</i>{{ed.end}}</span>
+                                      <h3>{{ed.edication}}</h3>
+                                      <h2>{{ed.institution}}</h2>
+                                      <p>{{ed.description}}</p>
+                                  </div>
+                          {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <!-- Education Start -->
+                
+                <!-- Experience Start -->
+                <div class="experience" id="experience">
+                    <div class="content-inner">
+                        <div class="content-header">
+                            <h2>Experience</h2>
+                        </div>
+                        <div class="row align-items-center">
+                          {% for ex in experience %}
+                            <div class="col-md-6">
+                                <div class="exp-col">
+                                    <span>{{ex.start}} <i>to</i> {{ed.end}}</span>
+                                    <h3>{{ex.company}}</h3>
+                                    <h5>{{ex.job}}</h5>
+                                    <p>{{ex.description}}</p>
+                                </div>
+                            </div>
+                          {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <!-- Experience Start -->
+
+                
+                <!-- Service Start -->
+                <div class="service" id="army">
+                    <div class="content-inner">
+                        <div class="content-header">
+                            <h2>Army Service</h2>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <div class="exp-col">
+                                    <span>{{army.start}} <i>to</i> {{army.end}}</span>
+                                    <h3>{{army.role}}</h3>
+                                    <p>{{army.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service Start -->
+                
+                <!-- Portfolio Start -->
+                <div class="portfolio" id="portfolio">
+                    <div class="content-inner">
+                        <div class="content-header">
+                            <h2>Language</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="skills">
+                                  {% for l in language %}
+                                    <div class="skill-name">
+                                        <p>{{l.language}}</p><p>100%</p>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Start -->
+                
+                
+                <!-- Contact Start -->
+                <div class="contact" id="contact">
+                    <div class="content-inner">
+                        <div class="content-header">
+                            <h2>Contact</h2>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <div class="contact-info">
+                                    <p><i class="fa fa-user"></i>{{user.first_name}} {{user.last_name}}</p>
+                                    <p><i class="fa fa-tag"></i>{{resume.job}}</p>
+                                    <p><i class="fa fa-envelope"></i><a href="mailto:info@example.com">{{user.email}}</a></p>
+                                    <p><i class="fa fa-phone"></i><a href="tel:+1234567890">{{resume.phone}}</a></p>
+                                    <p><i class="fa fa-map-marker"></i>{{resume.location}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Contact End -->
+                
+                <!-- Footer Start -->
+                <div class="footer">
+                    <div class="content-inner">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <p>Powered by <a href="/">Benny shtainberg</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer Start -->
+            </div>
+        </div>
+        
+        <!-- Back to Top -->
+        <a href="#" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="{% static 'css/profile/lib/easing/easing.min.js' %}"></script>
+        <script src="{% static 'css/profile/lib/slick/slick.min.js' %}"></script>
+        <script src="{% static 'css/profile/lib/typed/typed.min.js' %}"></script>
+        <script src="{% static 'css/profile/lib/waypoints/waypoints.min.js' %}"></script>
+        <script src="{% static 'css/profile/lib/isotope/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'css/profile/lib/lightbox/js/lightbox.min.js' %}"></script>
+        
+        <!-- Template Javascript -->
+        <script src="{% static 'js/profile/main.js' %}"></script>
+    </body>
+</html>

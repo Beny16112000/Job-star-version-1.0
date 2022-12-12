@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<style>
+    header {
+        background-color: black;
+    }
+    .table {
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+        margin-top: 50px;
+    }
+    .br {
+        background-color: black;
+    }
+</style>
+<main>
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    {% endfor %}
+    <div class="table">
+    <table class="table table-bordered" style="background-color: purple;">
+        <thead>
+          <tr>
+            <th scope="col">skills</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for skill in userSkills %}
+          <tr>
+            <th scope="row">{{skill.skill}}</th>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <form style="background-color: black; padding-top: 50px;" method="post" action="/resume/skills">
+        {% csrf_token %}
+        <h1>Add Skills</h1>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Skill</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="skill">
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+      <br>
+    <div class="br">
+      <a href="/resume/language">Go To Add Language</a>
+    </div>
+</main>
+</html>
+{% endblock %}

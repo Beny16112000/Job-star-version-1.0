@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<style>
+    header {
+        background-color: black;
+    }
+    .table {
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+        margin-top: 50px;
+    }
+    .br {
+        background-color: black;
+    }
+</style>
+<main>
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    {% endfor %}
+    <form style="background-color: black; padding-top: 50px;" method="post" action="/resume/about-you">
+        {% csrf_token %}
+        <h1>Add Couple words About You</h1>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Add Couple Words Avout Uou</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="aboutYou">
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+      <br>
+</main>
+</html>
+{% endblock %}

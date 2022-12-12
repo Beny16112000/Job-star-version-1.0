@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<link href="{% static  'css/hr_register.css' %}" rel="stylesheet">
+<form action="/hr-register" method="post">
+    {% csrf_token %}
+    <div class="container">
+      <h1>Register HR</h1>
+      <p>Please fill in this form to create an account.</p>
+      <hr>
+  
+      <label for="email"><b>Company name</b></label>
+      <input type="text" placeholder="Enter Company Name" name="company" id="email" required>
+
+      <label for="email"><b>Role</b></label>
+      <input type="text" placeholder="Enter Your Role" name="role" id="email" required>
+      <button type="submit" class="registerbtn">Register</button>
+    </div>
+  </form>

@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/fav.png">
+    <!-- Author Meta -->
+    <meta name="author" content="codepixer">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>Job Listing</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+        <!--
+        CSS
+        ============================================= -->
+        <link link rel="stylesheet" type="text/css" href="{% static 'css/index/linearicons.css' %}">
+        <link link rel="stylesheet" type="text/css" href="{% static 'css/index/font-awesome.min.css' %}">
+        <link link rel="stylesheet" type="text/css" href="{% static 'css/index/bootstrap.css' %}">
+        <link link rel="stylesheet" type="text/css" href="{% static 'css/index/magnific-popup.css' %}">
+        <link link rel="stylesheet" type="text/css" href="{% static 'css/index/nice-select.css' %}">
+        <link link rel="stylesheet" type="text/css" href="{% static 'css/index/animate.min.css' %}">
+        <link link rel="stylesheet" type="text/css" href="{% static 'css/index/owl.carousel.css' %}">
+        <link link rel="stylesheet" type="text/css" href="{% static 'css/index/main.css' %}">
+    </head>
+    <body>
+          <header id="header" id="home">
+            <div class="container">
+                <div class="row align-items-center justify-content-between d-flex">
+                  <div id="logo">
+                    <a href="/"><img style="max-height: 40px; vertical-align: middle; max-width: 786px;" src="{% static 'images/JobStar.png' %}"/></a>
+                  </div>
+                  <nav id="nav-menu-container">
+                    <ul class="nav-menu">
+                      <li class="menu-active"><a href="/">Home</a></li>
+                      <li><a href="/resume">Start Profile</a></li>
+                      <li><a href="/employees">Employees</a></li>
+                      <li><a href="/price">Price</a></li>
+                      <li><a href="/contact">Contact</a></li>
+                      <li><a href="/admin-panel">Admin Panel</a></li>
+                      {% if user.is_superuser %}
+                      <li><a href="/approve-hr">Approve Hr's</a></li>
+                      {% endif %}
+                      <li class="menu-has-children"><a href="">pages</a>
+                        <ul>
+                            <li><a href="/add-category">Add Category</a></li>
+                            <li><a href="search.html">search</a></li>
+                            <li><a href="single.html">single</a></li>
+                        </ul>
+                      </li>
+                      <li class="menu-has-children"><a href="">Blog</a>
+                        <ul>
+                            <li><a href="/blog">Blog</a></li>
+                            <li><a href="/add-blog">Add Blog</a></li>
+                            <li><a href="/add-blog-category">Add Blog Category</a></li>
+                        </ul>
+                      </li>
+                      <li class="menu-has-children"><a href="">HR</a>
+                        <ul>
+                            <li><a href="hr-panel">Admin panel</a></li>
+                            <li><a href="hr-register">Hiring ?</a></li>
+                            <li><a href="single.html">single</a></li>
+                        </ul>
+                      </li>
+                      {% if user.is_authenticated %}	
+                      <li><a class="ticker-btn" href="/logout">Log out</a></li>
+                      {% else %}
+                      <li><a class="ticker-btn" href="/register">Signup</a></li>
+                      <li><a class="ticker-btn" href="/login">Login</a></li>
+                      {% endif %}
+                    </ul>
+                  </nav><!-- #nav-menu-container -->		    		
+                </div>
+            </div>
+          </header><!-- #header -->
+
+          {% block content %}
+          {% endblock %}
+
+                <!-- start footer Area -->		
+        <footer class="footer-area section-gap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3  col-md-12">
+                        <div class="single-footer-widget">
+                            <h6>Top Products</h6>
+                            <ul class="footer-nav">
+                                <li><a href="#">Managed Website</a></li>
+                                <li><a href="#">Manage Reputation</a></li>
+                                <li><a href="#">Power Tools</a></li>
+                                <li><a href="#">Marketing Service</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6  col-md-12">
+                        <div class="single-footer-widget newsletter">
+                            <h6>Newsletter</h6>
+                            <p>You can trust us. we only send promo offers, not a single spam.</p>
+
+                                <form action="/newsletter" method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group row" style="width: 100%">
+                                        <div class="col-lg-8 col-md-12">
+                                            <input name="email" placeholder="Enter Email" type="email">
+                                        </div> 
+                                        <div class="col-lg-4 col-md-12">
+                                            <button type="submit" class="nw-btn primary-btn">Subscribe<span class="lnr lnr-arrow-right"></span></button>
+                                        </div> 
+                                    </div>		
+                                </form>
+                            </div>		
+                        </div>
+                    </div>
+                    <div class="col-lg-3  col-md-12">
+                        <div class="single-footer-widget mail-chimp">
+                            <h6 class="mb-20">Instragram Feed</h6>
+                        </div>
+                    </div>						
+                </div>
+
+                <div class="row footer-bottom d-flex justify-content-between">
+                    <p class="col-lg-8 col-sm-12 footer-text m-0 text-white">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This Website is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a target="_blank" href="https://github.com/Beny16112000">Benjamin Shtainberg</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+        </footer>
+        <!-- End footer Area -->		
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>	
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+        <script src="{% static 'js/index/vendor/jquery-2.2.4.min.js' %}"></script>
+        <script src="{% static 'js/index/vendor/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/index/easing.min.js' %}"></script>
+        <script src="{% static 'js/index/hoverIntent.js' %}"></script>
+        <script src="{% static 'js/index/superfish.min.js' %}"></script>
+        <script src="{% static 'js/index/jquery.ajaxchimp.min.js' %}"></script>
+        <script src="{% static 'js/index/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'js/index/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/index/jquery.sticky.js' %}"></script>
+        <script src="{% static 'js/index/jquery.nice-select.min.js' %}"></script>
+        <script src="{% static 'js/index/parallax.min.js' %}"></script>
+        <script src="{% static 'js/index/mail-script.js' %}"></script>
+        <script src="{% static 'js/index/main.js' %}"></script>	
+    </body>
+</html>
+
+
+

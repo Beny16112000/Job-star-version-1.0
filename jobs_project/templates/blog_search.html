@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+			<!-- start banner Area -->
+			<section class="banner-area relative" id="home">	
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								Blog Search				
+							</h1>	
+							<p class="text-white link-nav"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span> Blog Search <span class="lnr lnr-arrow-right"></span></p>
+						</div>											
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->	
+			
+			<!-- Start blog-posts Area -->
+			<section class="blog-posts-area section-gap">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-8 post-list blog-post-list">
+							{% for blog in blogs %}
+							<div class="single-post">
+								<img class="img-fluid" src="/media/{{blog.img}}" alt="">
+								<ul class="tags">
+									<li><a href="#">{{blog.category.title}}</a></li>
+								</ul>
+								<a href="/blog/{{blog.id}}">
+									<h1>
+										{{blog.title}}
+									</h1>
+								</a>
+									<p>
+										{{blog.context}}
+									</p>
+							</div>
+							{% endfor %}
+						<div class="col-lg-4 sidebar">
+							<div class="single-widget search-widget">
+								<form class="example" action="/blog/search" method="get" style="margin:auto;max-width:300px">
+								  <input type="text" placeholder="Search Posts" name="q">
+								  <button type="submit"><i class="fa fa-search"></i></button>
+								</form>								
+							</div>
+							<div class="single-widget category-widget">
+								<h4 class="title">Post Categories</h4>
+								<ul>
+									{% for category in categories %}
+									<li><a href="/blog/category/{{category.title}}" class="justify-content-between align-items-center d-flex"><h6>{{category.title}}</h6></a></li>
+									{% endfor %}
+								</ul>
+							</div>			
+						</div>
+						<div class="col-lg-4 sidebar">
+							<div class="single-widget search-widget">
+								<form class="example" action="/blog/search" method="get" style="margin:auto;max-width:300px">
+								  <input type="text" placeholder="Search Posts" name="q">
+								  <button type="submit"><i class="fa fa-search"></i></button>
+								</form>								
+							</div>
+					</div>
+				</div>	
+			</section>
+{% endblock %}
