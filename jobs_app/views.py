@@ -242,7 +242,10 @@ def profile(request):
     Main Profile Page After Creating Resume
     """
     user = request.user
-    resume = Resume.objects.get(user=request.user)
+    try:
+        resume = Resume.objects.get(user=request.user)
+    except ObjectDoesNotExist:
+        return redirect('/')
     experience = Experience.objects.filter(user=request.user)
     education = Education.objects.filter(user=request.user)
     army = Army.objects.get(user=request.user)
@@ -292,10 +295,22 @@ def profile_public(request, username):
         return redirect('/')
     else:
         user = User.objects.get(username=username)
-        resume = Resume.objects.get(user=user)
+        try:
+            resume = Resume.objects.get(user=user)
+        except Resume.DoesNotExist:
+            resume = None
+        
+        try:
+            army = Army.objects.get(user=user)
+        except Army.DoesNotExist:
+            army = None
+
+        if resume is None or army is None:
+            return redirect('/')
+
         experience = Experience.objects.filter(user=user)
         education = Education.objects.filter(user=user)
-        army = Army.objects.get(user=user)
+        
         skills = Skills.objects.filter(user=user)
         language = Language.objects.filter(user=user)
         about = AboutYou.objects.get(user=user)
@@ -572,6 +587,7 @@ def add_blog(request):
 
 
 
+@login_required
 def single_blog(request, id):
     """
     Single blog page
